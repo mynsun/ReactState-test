@@ -2,6 +2,7 @@ import "./App.css";
 import type { Member } from "./types/member.ts";
 import MemberCard from "./component/MemberCard.tsx";
 import BTS from "./component/BTS.tsx";
+import React from "react";
 
 const members: Member[] = [
   { image: "/bts/bts1.png", nick: "RM" },
@@ -16,7 +17,12 @@ const members: Member[] = [
 function App() {
   return (
     <div>
-      <BTS members={members} />
+      {/* <BTS members={members} /> */}
+      {members.map((member) => (
+        <React.Fragment key={member.nick}>
+          <MemberCard member={member}></MemberCard>
+        </React.Fragment>
+      ))}
     </div>
   );
 }
